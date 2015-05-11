@@ -281,7 +281,12 @@ function controlEvents(){
 // Run Button
 run_button.addEventListener('click', function(){
   config = JSON.parse(pattern_data.value);
-  drawFromData(config);
+
+  if (config.position_data){
+    drawFromData(config);
+  } else {
+    drawPattern(config);
+  }
 });
 
 
