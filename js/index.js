@@ -42,6 +42,9 @@ function controlValuesFromData(data){
   random_input.value = data.points;
 
   config = controlValues();
+
+
+
   drawPattern(config);
 };
 
@@ -236,11 +239,15 @@ function controlEvents(){
 run_button.addEventListener('click', function(){
   config = JSON.parse(pattern_data.value);
 
+  // Draw Random Pattern From Data
   if (config.position_data){
     drawFromData(config);
+
+  // Draw Original Algorythm Pattern
   } else {
     drawPattern(config);
   }
+
 });
 
 
@@ -303,7 +310,16 @@ function Picks(){
   ];
 
   function cyclePicks() {
+
+    // Draw Random Pattern From Data
+  if (picks[index].position_data){
+    drawFromData(picks[index]);
+
+  // Draw Original Algorythm Pattern
+  } else {
     controlValuesFromData(picks[index]);
+  }
+
     index = (index + 1) % picks.length;
   };
   cyclePicks();
@@ -358,9 +374,14 @@ function checkKey(e) {
     config = JSON.parse(pattern_data.value);
     randomizePattern(config);
     
+  } else if (e.keyCode == '82') {
+    // Q
+    config = JSON.parse(pattern_data.value);
+    randomizePattern(config);
+    
   }
 
-}
+};
 
 
 
