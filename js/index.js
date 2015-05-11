@@ -151,54 +151,8 @@ function drawFromData(config){
 
 
 
-
-
-
-// Draw Canvas
-function drawRandomPattern(){
-
-  var w = Math.floor(Math.random() * 100) + 1;
-  var h = Math.floor(Math.random() * 100) + 1;
-  var x_len = Math.floor(Math.random() * w) + 1;
-  var y_len = Math.floor(Math.random() * h) + 1;
-
-  // Increase range of x-lengh, y-length
-  // according to height and width sizes
-  x_len_input.setAttribute('max', w);
-
-
-  y_len_input.setAttribute('max', h);  
-
-  width_input.value = w;
-  height_input.value = h;
-  x_len_input.value = x_len;
-  y_len_input.value = y_len;
-
-  // Update Pattern Preview Window Size
-  canvas_pattern.width = w;
-  canvas_pattern.height = h;
-
-
-  // The Pattern that's repeated.
-  ctx_pattern.beginPath();
-  ctx_pattern.moveTo(0,0);
-  ctx_pattern.lineTo(y_len, x_len);
-  
-  for (var i = 0, len = Math.floor(Math.random() * 30) + 1; i < len; i++){
-    var rand_width = Math.floor(Math.random() *  w ) + 1;
-    var rand_height = Math.floor(Math.random() * h ) + 1;
-  	ctx_pattern.lineTo(Math.floor(Math.random() * w) + 1, Math.floor(Math.random() * h) + 1);
-  }
-
-  ctx_pattern.fill();
-
-	repeatPattern(config);
-
-};
-
-
-
-
+// Initial Canvas Pattern.
+// Makes interesting starting point for random.
 function drawPattern(config){
 
   x_len_input.value = config.x_len;
