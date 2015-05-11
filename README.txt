@@ -1,3 +1,3 @@
-A Pen created at CodePen.io. You can find this one at http://codepen.io/brandonbrule/pen/EjPmqY.
+http://brandonbrule.github.io/canvas-pattern/
 
  
