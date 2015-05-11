@@ -1,3 +1,10 @@
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 body {
   margin: 0;
 }
@@ -7,6 +14,20 @@ textarea {
   width: 100%;
   padding: 5px;
 }
+
+
+fieldset{
+  float: left;
+  width: 45%;
+  border: none;
+  padding: 0;
+  margin-left: 2.5%;
+}
+
+hr{
+  clear:both;
+}
+
 
 label {
   font-size: .875em;

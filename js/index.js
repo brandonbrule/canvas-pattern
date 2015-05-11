@@ -64,7 +64,7 @@ function repeatPattern(config){
 
 
 // Draw Canvas
-function drawMixItUpPattern(config){
+function randomizePattern(config){
 
   x_len_input.value = config.x_len;
   y_len_input.value = config.y_len;
@@ -72,8 +72,11 @@ function drawMixItUpPattern(config){
   var w = config.w;
   var h = config.h;
   var x_len = config.x_len;
+  var x_len_arr = [];
   var y_len = config.y_len;
+  var y_len_arr = [];
   var points = config.points;
+  var position_data = [];
 
   // Increase range of x-lengh, y-length
   // according to height and width sizes
@@ -92,22 +95,62 @@ function drawMixItUpPattern(config){
   ctx_pattern.beginPath();
   ctx_pattern.moveTo(0,0);
   ctx_pattern.lineTo(y_len, x_len);
-  for (var i = 0, len = Math.floor(Math.random() * points) + 1; i < len; i++){
+  for (var i = 0, len = points; i < len; i++){
     var rand_width = Math.floor(Math.random() * w) + 1;
     var rand_height = Math.floor(Math.random() * h) + 1;
+
+    x_len_arr.push(rand_width);
+    y_len_arr.push(rand_height);
+    position_data.push( { w: rand_width, h: rand_height } );
   	ctx_pattern.lineTo(rand_width, rand_height);
   }
   ctx_pattern.fill();
+  console.log(position_data);
 
   config.x_len = rand_width;
   config.y_len = rand_height;
-
-
+  config.position_data = position_data;
 
   // Repeat the Pattern.
 	repeatPattern(config);
 
 };
+
+
+function drawFromData(config){
+  var w = config.w;
+  var h = config.h;
+  var x_len = config.x_len;
+  var y_len = config.y_len;
+  var points = config.points;
+
+  // Increase range of x-lengh, y-length
+  // according to height and width sizes
+  x_len_input.setAttribute('max', w);
+  x_len = x_len_input.value;
+
+  y_len_input.setAttribute('max', h);  
+  y_len = y_len_input.value;
+
+  // Update Pattern Preview Window Size
+  canvas_pattern.width = w;
+  canvas_pattern.height = h;
+
+  // The Pattern that's repeated.
+  ctx_pattern.beginPath();
+  ctx_pattern.moveTo(0,0);
+  ctx_pattern.lineTo(y_len, x_len);
+  for (var i = 0, len = points; i < len; i++){
+    ctx_pattern.lineTo(config.position_data[i].w, config.position_data[i].h);
+  }
+  ctx_pattern.fill();
+
+  // Repeat the Pattern.
+  repeatPattern(config);
+};
+
+
+
 
 
 
@@ -238,7 +281,7 @@ function controlEvents(){
 // Run Button
 run_button.addEventListener('click', function(){
   config = JSON.parse(pattern_data.value);
-  drawPattern(config);
+  drawFromData(config);
 });
 
 
@@ -354,11 +397,8 @@ function checkKey(e) {
   } else if (e.keyCode == '81') {
     // Q
     config = JSON.parse(pattern_data.value);
-    drawMixItUpPattern(config);
+    randomizePattern(config);
     
-  } else if (e.keyCode == '82') {
-    // R
-    drawRandomPattern();
   }
 
 }
