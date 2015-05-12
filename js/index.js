@@ -375,7 +375,7 @@ function checkKey(e) {
     sliders[focus_index].focus();
   
   } else if (e.keyCode == '81') {
-    // Q
+    // R
     config = JSON.parse(pattern_data.value);
     randomizePattern(config);
     
@@ -383,6 +383,10 @@ function checkKey(e) {
     // Q
     config = JSON.parse(pattern_data.value);
     randomizePattern(config);
+    
+  } else if (e.keyCode == '83') {
+    // S
+    cycleSamples();
     
   }
 
