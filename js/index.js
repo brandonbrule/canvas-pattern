@@ -121,6 +121,13 @@ function drawFromData(config){
   var y_len = config.y_len;
   var points = config.points;
 
+  x_len_input.value = x_len;
+  y_len_input.value = y_len;
+
+  width_input.value = w;
+  height_input.value = h;
+
+
   // Increase range of x-lengh, y-length
   // according to height and width sizes
   x_len_input.setAttribute('max', w);
@@ -144,6 +151,12 @@ function drawFromData(config){
 
   // Repeat the Pattern.
   repeatPattern(config);
+
+  // its.a('data x_len_input: ' + x_len_input.value);
+  // its.a('data y_len_input: ' + y_len_input.value);
+  // its.a(config);
+
+ 
 };
 
 
@@ -187,12 +200,15 @@ function randomizePattern(config){
   }
   ctx_pattern.fill();
 
-  config.x_len = rand_width;
-  config.y_len = rand_height;
+
   config.position_data = position_data;
 
   // Repeat the Pattern.
 	repeatPattern(config);
+
+  // its.a('rand x_len_input: ' + x_len_input.value);
+  // its.a('rand y_len_input: ' + y_len_input.value);
+  // its.a(config);
 
 };
 
@@ -285,7 +301,7 @@ window.addEventListener('resize', resizeCanvas, false);
 // OnLoad Set Up Slider Events and Default Sample
 window.onload = function(){
   controlEvents();
-  cycleSamples();
+  //cycleSamples();
 };
 
 

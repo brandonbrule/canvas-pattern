@@ -16,6 +16,11 @@ textarea {
 }
 
 
+#its-wrapper{
+  width:600px;
+  font-size: 12px;
+}
+
 fieldset{
   float: left;
   width: 45%;
