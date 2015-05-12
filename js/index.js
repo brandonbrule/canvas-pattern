@@ -300,7 +300,7 @@ window.addEventListener('resize', resizeCanvas, false);
 // OnLoad Set Up Slider Events and Default Sample
 window.onload = function(){
   controlEvents();
-  cycleSamples();
+  //cycleSamples();
 };
 
 
