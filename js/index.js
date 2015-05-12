@@ -31,10 +31,10 @@ function configFromControlValues(){
     x_len: x_len_input.value,
     y_len: y_len_input.value,
     points: random_input.value
-  }
+  };
 
   return config;
-};
+}
 
 
 // Set Range Slider Values from Data
@@ -44,7 +44,7 @@ function controlValuesFromData(data){
   x_len_input.value = data.x_len;
   y_len_input.value = data.y_len;
   random_input.value = data.points;
-};
+}
 
 
 // Refill Canvas with repeating Pattern
@@ -61,7 +61,7 @@ function repeatPattern(config){
   ctx_repeat.fillRect(0,0,canvas_repeat.width,canvas_repeat.height);
 
   pattern_data.value = JSON.stringify(config);
-};
+}
 
 
 
@@ -108,7 +108,7 @@ function drawPattern(config){
 
   repeatPattern(config);
 
-};
+}
 
 
 
@@ -157,7 +157,7 @@ function drawFromData(config){
   // its.a(config);
 
  
-};
+}
 
 
 
@@ -196,7 +196,7 @@ function randomizePattern(config){
     var rand_width = Math.floor(Math.random() * w) + 1;
     var rand_height = Math.floor(Math.random() * h) + 1;
     position_data.push( { w: rand_width, h: rand_height } );
-  	ctx_pattern.lineTo(rand_width, rand_height);
+    ctx_pattern.lineTo(rand_width, rand_height);
   }
   ctx_pattern.fill();
 
@@ -204,13 +204,13 @@ function randomizePattern(config){
   config.position_data = position_data;
 
   // Repeat the Pattern.
-	repeatPattern(config);
+  repeatPattern(config);
 
   // its.a('rand x_len_input: ' + x_len_input.value);
   // its.a('rand y_len_input: ' + y_len_input.value);
   // its.a(config);
 
-};
+}
 
 
 
@@ -234,8 +234,7 @@ function debounce(func, wait, immediate) {
     timeout = setTimeout(later, wait);
     if (callNow) func.apply(context, args);
   };
-};
-
+}
 
 
 
@@ -258,7 +257,7 @@ function drawPatternType(){
   } else {
     drawPattern(config);
   }
-};
+}
 
 
 
@@ -276,7 +275,7 @@ function controlEvents(){
   }
 
 
-};
+}
 
 
 
@@ -301,7 +300,7 @@ window.addEventListener('resize', resizeCanvas, false);
 // OnLoad Set Up Slider Events and Default Sample
 window.onload = function(){
   controlEvents();
-  //cycleSamples();
+  cycleSamples();
 };
 
 
@@ -316,7 +315,7 @@ run_button.addEventListener('click', function(){
 document.getElementById('randomize-button').onclick = function(){
   config = JSON.parse(pattern_data.value);
   randomizePattern(config);
-}
+};
 
 
 // Samples Button
@@ -351,15 +350,15 @@ function cycleSamples(){
     }
 
     sample_index = (sample_index + 1) % samples.length;
-  };
+  }
 
   drawSamples();
-};
+}
 
 // Samples Button
 toggle_samples_input.onclick = function(){
   cycleSamples();
-}
+};
 
 
 
@@ -372,9 +371,9 @@ function checkKey(e) {
   e = e || window.event;
 
   if (e.keyCode == '87') {
-		// W    
+    // W    
     if (focus_index >= sliders.length){
-    	focus_index = focus_index - 1;
+      focus_index = focus_index - 1;
     } else {
       focus_index = focus_index - 1;
     }
@@ -384,7 +383,7 @@ function checkKey(e) {
   } else if (e.keyCode == '69') {
     // E
     if (focus_index < sliders.length){
-    	focus_index = focus_index + 1;
+      focus_index = focus_index + 1;
     } else {
       focus_index = sliders.length + 1;
     }
@@ -406,7 +405,7 @@ function checkKey(e) {
     
   }
 
-};
+}
 
 
 
@@ -462,7 +461,7 @@ ctx_pattern.beginPath();
   ctx_pattern.beginPath();
   ctx_pattern.moveTo(x_len,y_len);
   ctx_pattern.lineTo(y_len, x_len);
-	ctx_pattern.lineTo(x_len + 10, y_len - 10);
+  ctx_pattern.lineTo(x_len + 10, y_len - 10);
   ctx_pattern.lineTo(0, 0);
   ctx_pattern.lineTo(x_len - 10, y_len + 10);
   ctx_pattern.lineTo(x_len, y_len);
