@@ -23,6 +23,14 @@ var random_input = document.getElementById('random');
 var pattern_data = document.getElementById('pattern-data');
 
 
+var background_colours = [
+    {background_colour: '#FFF056'},
+    {background_colour: '#fe524c'},
+    {background_colour: '#61D2D6'},
+    {background_colour: '#A0FF57'},
+    {background_colour: '#fff'}
+  ];
+
 
 
 
@@ -85,6 +93,10 @@ function controlValuesFromData(data){
 function patternData(config){
   pattern_data.value = JSON.stringify(config);
   window.location.hash = encodeURIComponent(JSON.stringify(config));
+
+  if ( background_colours[config.background_index] ){
+    document.getElementsByTagName('body')[0].style.background = background_colours[config.background_index].background_colour;
+  }
 }
 
 
@@ -201,22 +213,16 @@ function drawFromData(config){
 
 
 function randomBackground(){
-  var samples = [
-    {background_colour: '#FFF056'},
-    {background_colour: '#fe524c'},
-    {background_colour: '#61D2D6'},
-    {background_colour: '#A0FF57'},
-    {background_colour: '#fff'}
-  ];
+  
 
   // drawSamples uses the modulus operator
   // to continuously go through an array 
   function drawSamples() {
 
-    //ctx.fillStyle = samples[background_index].background_colour;
-    document.getElementsByTagName('body')[0].style.background = samples[background_index].background_colour;
+    background_index = (background_index + 1) % background_colours.length;
 
-    background_index = (background_index + 1) % samples.length;
+    config.background_index = background_index;
+    patternData(config);
   }
 
   drawSamples();
