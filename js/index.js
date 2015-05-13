@@ -355,7 +355,7 @@ function controlEvents(){
   for (i = 0; i < len; i++){
     sliders[i].onchange =  debounce(function() {
       config = configFromControlValues();
-      drawPattern(config);
+      randomizePattern(config);
     }, 150);
   }
 }
