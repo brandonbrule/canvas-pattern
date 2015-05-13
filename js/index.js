@@ -23,6 +23,43 @@ var random_input = document.getElementById('random');
 var pattern_data = document.getElementById('pattern-data');
 
 
+
+
+
+// Helper Functions
+function getQueryVariable(variable){
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+
+// General Debounce
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function() {
+    var context = this, args = arguments;
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
+
+
+
+
+
+
+
+
 function configFromControlValues(){
   var config = {
     w: width_input.value,
@@ -45,6 +82,11 @@ function controlValuesFromData(data){
   random_input.value = data.points;
 }
 
+function patternData(config){
+  pattern_data.value = JSON.stringify(config);
+  window.location.hash = encodeURIComponent(JSON.stringify(config));
+}
+
 
 // Refill Canvas with repeating Pattern
 function repeatPattern(config){
@@ -59,7 +101,9 @@ function repeatPattern(config){
   ctx_repeat.fillStyle = pattern;
   ctx_repeat.fillRect(0,0,canvas_repeat.width,canvas_repeat.height);
 
-  pattern_data.value = JSON.stringify(config);
+
+  patternData(config);
+
 }
 
 
@@ -273,21 +317,6 @@ function cycleSamples(){
 
 
 
-// General Debounce
-function debounce(func, wait, immediate) {
-  var timeout;
-  return function() {
-    var context = this, args = arguments;
-    var later = function() {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
-}
 
 
 
@@ -300,7 +329,16 @@ function debounce(func, wait, immediate) {
 // Draw starting point, which is drawPattern
 // And Randomized Data
 function drawPatternType(){
-  config = JSON.parse(pattern_data.value);
+
+  if ( window.location.hash ){
+    config = decodeURIComponent(window.location.href.split('#')[1]);
+    config = JSON.parse(config);
+
+  } else {
+    config = JSON.parse(pattern_data.value);
+  }
+
+  its.a(config);
 
 
   // Draw Random Pattern From Data
@@ -340,23 +378,18 @@ function buttonEvents(){
         var data_action = e.target.getAttribute('data-action');
         switch (data_action) {
           case 'toggle-menu':
-            console.log('toggle-menu');
             document.getElementById('menu').classList.toggle('active');
             break;
           case 'randomize-pattern':
-            console.log('randomize-pattern')
             config = JSON.parse(pattern_data.value);
             randomizePattern(config);
           case 'toggle-background': 
-            console.log('toggle-background');
             randomBackground();
             break;
           case 'toggle-samples':
-            console.log('toggle-samples');
             cycleSamples();
             break;
           case 'submit-data':
-            console.log('submit-data');
             config = JSON.parse(pattern_data.value);
             drawPatternType();
           default:

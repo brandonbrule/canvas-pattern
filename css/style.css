@@ -18,6 +18,8 @@ textarea {
 
 #its-wrapper{
   width:600px;
+  position:absolute!important;
+  right: 0;
   font-size: 12px;
 }
 
