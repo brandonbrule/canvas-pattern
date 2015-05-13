@@ -14,6 +14,7 @@ var canvas_pattern = document.getElementById('canvas-pattern');
 var ctx_pattern = canvas_pattern.getContext('2d');
 
 // Control Inputs
+var toggle_menu = document.getElementById('toggle-menu');
 var sliders = document.getElementsByTagName('input');
 var width_input = document.getElementById('width');
 var height_input = document.getElementById('height');
@@ -322,6 +323,13 @@ window.onload = function(){
   resizeCanvas();
   //cycleSamples();
 };
+
+
+// Show Menu
+
+toggle_menu.addEventListener('click', function(){
+  document.getElementById('menu').classList.toggle('active');
+});
 
 
 // Run Button

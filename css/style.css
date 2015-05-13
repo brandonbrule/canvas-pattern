@@ -63,7 +63,7 @@ hr{
   transition: all 0.5s ease;
 }
 
-.controls:hover{
+.controls.active{
   opacity: 1;
 }
 
