@@ -375,8 +375,10 @@ function buttonEvents(){
             break;
           
           case 'randomize-pattern':
+            setBackgroundColour();
             config = JSON.parse(pattern_data.value);
             randomizePattern(config);
+
             break;
             
           case 'toggle-background': 
@@ -434,48 +436,35 @@ window.onpopstate=function(){
 document.onkeydown = function(e) {
   
   e = e || window.event;
+  key = e.keyCode;
 
-  if (e.keyCode == '87') {
-    // W    
-    if (focus_index >= sliders.length){
-      focus_index = focus_index - 1;
-    } else {
-      focus_index = focus_index - 1;
-    }
-    
-    sliders[focus_index].focus();
+  switch (key) {
+          
+          // R - For Random
+          case 82:
+            config = JSON.parse(pattern_data.value);
+            randomizePattern(config);
+            setBackgroundColour();
+            break;
+          
+          // S - For Sample
+          case 83:
+            cycleSamples();
+            break;
+          
+          // B - For Background
+          case 66: 
+            setBackgroundColour();
+            break;
 
-  } else if (e.keyCode == '69') {
-    // E
-    if (focus_index < sliders.length){
-      focus_index = focus_index + 1;
-    } else {
-      focus_index = sliders.length + 1;
-    }
-    sliders[focus_index].focus();
-  
-  } else if (e.keyCode == '81') {
-    // R
-    config = JSON.parse(pattern_data.value);
-    setBackgroundColour();
-    randomizePattern(config);
-    
-  } else if (e.keyCode == '82') {
-    // Q
-    config = JSON.parse(pattern_data.value);
-    randomizePattern(config);
-    
-  } else if (e.keyCode == '83') {
-    // S
-    cycleSamples();
-    
-  } else if (e.keyCode == '66'){
-    // B
-    setBackgroundColour();
-  } else if (e.keyCode == '77'){
-    // M
-    document.getElementById('menu').classList.toggle('active');
-  }
+          // M - For Menu
+          case 77:
+            document.getElementById('menu').classList.toggle('active');
+            break;
+          
+          default:
+
+        }
 
 }
 
