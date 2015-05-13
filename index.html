@@ -9,13 +9,23 @@
 
 <body>
 
-  <button id="toggle-menu" class="toggle-menu">Menu</button>
+<div class="utility-nav">
+  <button id="toggle-menu" data-action="toggle-menu" class="menu">(M)enu</button>
+  <button data-action="randomize-pattern">(R)andomize</button>
+  <button data-action="toggle-background">(B)ackground</button>
+  <button data-action="toggle-samples">(S)amples</button>
+</div>
 
 <header class="controls" id="menu">
-  <div class="pattern-preview">
-    <canvas id="canvas-pattern" width="10" height="10"></canvas>
-  </div>
+  
   <hr>
+
+  <fieldset>
+    <div class="pattern-preview">
+      <canvas id="canvas-pattern" width="10" height="10"></canvas>
+    </div>
+  </fieldset>
+
   <fieldset>
     <label for="width">Width</label>
     <input id="width" type="range" min="1" max="100">
@@ -37,19 +47,16 @@
     <input id="random" type="range" min="1" max="12">
   </fieldset>
   <fieldset>
-    <button id="randomize-button">(R)andomize</button>
+    <button data-action="randomize-pattern">(R)andomize</button>
+    <button data-action="toggle-background">(B)ackground</button>
+    <button data-action="toggle-samples">(S)amples</button>
   </fieldset>
-  <fieldset>
-    <button type="button" id="toggle-background">(B)ackground</button>
-  </fieldset>
-   <fieldset>
-    <button type="button" id="toggle-samples">(S)amples</button>
-  </fieldset>
+  
 
 
   <hr>
-  <textarea id="pattern-data">{"w":"62","h":"51","x_len":"29","y_len":"5","points":"7","position_data":[{"w":50,"h":32},{"w":9,"h":48},{"w":54,"h":34},{"w":23,"h":30},{"w":28,"h":45},{"w":15,"h":24},{"w":18,"h":22}]}</textarea>
-  <button id="run-button">Submit</button>
+  <textarea style="width:80%; float: left;" id="pattern-data">{"w":"62","h":"51","x_len":"29","y_len":"5","points":"7","position_data":[{"w":50,"h":32},{"w":9,"h":48},{"w":54,"h":34},{"w":23,"h":30},{"w":28,"h":45},{"w":15,"h":24},{"w":18,"h":22}]}</textarea>
+  <button style="width:20%; float: right;" data-action="submit-data" id="run-button">Submit</button>
   
 </header>
 

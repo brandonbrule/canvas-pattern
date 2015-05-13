@@ -22,11 +22,15 @@ textarea {
 }
 
 fieldset{
-  float: left;
+  display: inline-block;
   width: 12.5%;
+  margin-left: 2.5%;
   border: none;
   padding: 0;
-  margin-left: 2.5%;
+  margin: 0;
+}
+fieldset:first-child{
+  margin-left: 0;
 }
 
 hr{
@@ -49,6 +53,11 @@ hr{
 #canvas-repeat {
   display: block;
 
+}
+
+
+.utility-nav{
+  position:absolute;
 }
 
 .controls {
