@@ -31,6 +31,21 @@ var background_colours = [
     {background_colour: '#fff'}
   ];
 
+var sample_examples = [
+    {"w":"12","h":"72","x_len":9,"y_len":23,"points":"3","position_data":[{"w":5,"h":8},{"w":2,"h":72},{"w":9,"h":23}]},
+    {"w":"76","h":"74","x_len":"7","y_len":"3","points":"1"},
+    {"w":"20","h":"4","x_len":"15","y_len":"1","points":"1"},
+    {"w":"12","h":"72","x_len":9,"y_len":4,"points":"3","position_data":[{"w":9,"h":13},{"w":1,"h":15},{"w":9,"h":4}]},
+    {"w":"9","h":"49","x_len":6,"y_len":48,"points":"1","position_data":[{"w":6,"h":48}]},
+    {"w":"7","h":"4","x_len":"3","y_len":"4","points":"1"},
+    {"w":"15","h":"28","x_len":9,"y_len":4,"points":"5","position_data":[{"w":8,"h":19},{"w":12,"h":13},{"w":10,"h":23},{"w":7,"h":6},{"w":9,"h":4}]},
+    {"w":"2","h":"33","x_len":"2","y_len":"1","points":"1"},
+    {"w":"26","h":"26","x_len":"14","y_len":"8","points":"1"},
+
+    {"w":"9","h":"49","x_len":"9","y_len":"45","points":"1"},
+    {"w":"90","h":"5","x_len":"82","y_len":"6","points":"1"}
+  ];
+
 
 
 
@@ -98,6 +113,17 @@ function patternData(config){
     document.getElementsByTagName('body')[0].style.background = background_colours[config.background_index].background_colour;
   }
 }
+
+// Background Colour
+function setBackgroundColour(){
+  // Interate Index for background colours by 1
+  (function(){
+    background_index = (background_index + 1) % background_colours.length;
+    config.background_index = background_index;
+    patternData(config);
+  })();
+}
+
 
 
 // Refill Canvas with repeating Pattern
@@ -212,24 +238,6 @@ function drawFromData(config){
 
 
 
-function randomBackground(){
-  
-
-  // drawSamples uses the modulus operator
-  // to continuously go through an array 
-  function drawSamples() {
-
-    background_index = (background_index + 1) % background_colours.length;
-
-    config.background_index = background_index;
-    patternData(config);
-  }
-
-  drawSamples();
-}
-
-
-
 // Randomize the Pattern
 function randomizePattern(config){
 
@@ -280,39 +288,22 @@ function randomizePattern(config){
 
 // Samples Button
 function cycleSamples(){
-  var samples = [
-    {"w":"12","h":"72","x_len":9,"y_len":23,"points":"3","position_data":[{"w":5,"h":8},{"w":2,"h":72},{"w":9,"h":23}]},
-    {"w":"76","h":"74","x_len":"7","y_len":"3","points":"1"},
-    {"w":"20","h":"4","x_len":"15","y_len":"1","points":"1"},
-    {"w":"12","h":"72","x_len":9,"y_len":4,"points":"3","position_data":[{"w":9,"h":13},{"w":1,"h":15},{"w":9,"h":4}]},
-    {"w":"9","h":"49","x_len":6,"y_len":48,"points":"1","position_data":[{"w":6,"h":48}]},
-    {"w":"7","h":"4","x_len":"3","y_len":"4","points":"1"},
-    {"w":"15","h":"28","x_len":9,"y_len":4,"points":"5","position_data":[{"w":8,"h":19},{"w":12,"h":13},{"w":10,"h":23},{"w":7,"h":6},{"w":9,"h":4}]},
-    {"w":"2","h":"33","x_len":"2","y_len":"1","points":"1"},
-    {"w":"26","h":"26","x_len":"14","y_len":"8","points":"1"},
-
-    {"w":"9","h":"49","x_len":"9","y_len":"45","points":"1"},
-    {"w":"90","h":"5","x_len":"82","y_len":"6","points":"1"}
-  ];
-
   // drawSamples uses the modulus operator
   // to continuously go through an array 
-  function drawSamples() {
+  (function(){
 
     // Draw Random Pattern From Data
-    if (samples[sample_index].position_data){
-      drawFromData(samples[sample_index]);
+    if (sample_examples[sample_index].position_data){
+      drawFromData(sample_examples[sample_index]);
 
     // Draw Original Algorythm Pattern
     } else {
-      controlValuesFromData( samples[sample_index]);
-      drawPattern(samples[sample_index]);
+      controlValuesFromData( sample_examples[sample_index]);
+      drawPattern(sample_examples[sample_index]);
     }
 
-    sample_index = (sample_index + 1) % samples.length;
-  }
-
-  drawSamples();
+    sample_index = (sample_index + 1) % sample_examples.length;
+  })();
 }
 
 
@@ -335,11 +326,13 @@ function cycleSamples(){
 // Draw starting point, which is drawPattern
 // And Randomized Data
 function drawPatternType(){
-
+  
+  // It'll basically always be from window hash
   if ( window.location.hash ){
     config = decodeURIComponent(window.location.href.split('#')[1]);
     config = JSON.parse(config);
 
+  // Else is if we paste date
   } else {
     config = JSON.parse(pattern_data.value);
   }
@@ -359,7 +352,6 @@ function drawPatternType(){
 
 // Slider Events
 function controlEvents(){
-
   var sliders = document.getElementsByTagName('input');
   var i = 0;
   var len = sliders.length;
@@ -369,11 +361,10 @@ function controlEvents(){
       drawPattern(config);
     }, 150);
   }
-
-
 }
 
 
+// Set Up All Button Events
 function buttonEvents(){
   var buttons = document.getElementsByTagName('button');
 
@@ -392,16 +383,12 @@ function buttonEvents(){
             break;
             
           case 'toggle-background': 
-            randomBackground();
+            setBackgroundColour();
             break;
 
           case 'toggle-samples':
             cycleSamples();
             break;
-
-          case 'submit-data':
-            config = JSON.parse(pattern_data.value);
-            drawPatternType();
           
           default:
             console.log('button data-action not found');
@@ -426,20 +413,14 @@ var resizeCanvas = debounce(function() {
 
 }, 250);
 
-
+// On Resize
 window.addEventListener('resize', resizeCanvas, false);
-
-
-
-
-
 
 // OnLoad Set Up Slider Events and Default Sample
 window.onload = function(){
   controlEvents();
-  buttonEvents()
+  buttonEvents();
   resizeCanvas();
-  //cycleSamples();
 };
 
 // Back, Forward Button
@@ -479,7 +460,7 @@ document.onkeydown = function(e) {
   } else if (e.keyCode == '81') {
     // R
     config = JSON.parse(pattern_data.value);
-    randomBackground();
+    setBackgroundColour();
     randomizePattern(config);
     
   } else if (e.keyCode == '82') {
@@ -493,7 +474,7 @@ document.onkeydown = function(e) {
     
   } else if (e.keyCode == '66'){
     // B
-    randomBackground();
+    setBackgroundColour();
   } else if (e.keyCode == '77'){
     // M
     document.getElementById('menu').classList.toggle('active');
