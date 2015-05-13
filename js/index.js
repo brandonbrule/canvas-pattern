@@ -36,15 +36,14 @@ var background_colours = [
 
 var sample_examples = [
     {"w":"28","h":"45","x_len":"9","y_len":"4","points":"3","position_data":[{"w":15,"h":11},{"w":7,"h":14},{"w":27,"h":34}],"background_index":0},
-    {"w":"28","h":"45","x_len":"9","y_len":"4","points":"3","position_data":[{"w":10,"h":19},{"w":11,"h":21},{"w":27,"h":24}],"background_index":1},
-    {"w":"28","h":"45","x_len":"9","y_len":"4","points":"3","position_data":[{"w":9,"h":4},{"w":2,"h":4},{"w":1,"h":38}],"background_index":2},
+    {"w":"9","h":"49","x_len":6,"y_len":48,"points":"1","position_data":[{"w":2,"h":5}],"background_index":3,"x1":4,"x2":7,"y1":49,"y2":47},
+    {"w":"28","h":"45","x_len":"9","y_len":"4","points":"3","position_data":[{"w":7,"h":28},{"w":8,"h":32},{"w":24,"h":9}],"background_index":2,"x1":6,"x2":22,"y1":25,"y2":31},
     {"w":"76","h":"74","x_len":"7","y_len":"3","points":"1","background_index":3},
-    {"w":"20","h":"4","x_len":"15","y_len":"1","points":"1", "background_index": 0},
-    {"w":"9","h":"49","x_len":6,"y_len":48,"points":"1","position_data":[{"w":6,"h":48}],"background_index":2},
+    {"w":"76","h":"69","x_len":"6","y_len":"48","points":"6","x1":6,"x2":29,"y1":47,"y2":56,"position_data":[{"w":5,"h":34},{"w":72,"h":6},{"w":56,"h":21},{"w":26,"h":47},{"w":48,"h":18},{"w":50,"h":20}],"background_index":0},
     {"w":"56","h":"39","x_len":"9","y_len":"0","points":"4","position_data":[{"w":12,"h":35},{"w":49,"h":36},{"w":18,"h":39},{"w":15,"h":38}],"background_index":1},
     {"w":"2","h":"33","x_len":"2","y_len":"1","points":"1","background_index":3},
-    {"w":"54","h":"38","x_len":"12","y_len":"28","points":"4","position_data":[{"w":45,"h":7},{"w":32,"h":13},{"w":41,"h":30},{"w":39,"h":21}],"background_index":0},
-    {"w":"90","h":"5","x_len":"82","y_len":"6","points":"1", "background_index": 4},
+    {"w":"54","h":"38","x_len":"12","y_len":"28","points":"4","position_data":[{"w":12,"h":8},{"w":32,"h":21},{"w":17,"h":15},{"w":44,"h":31}],"background_index":0,"x1":17,"x2":51,"y1":7,"y2":36},
+    {"w":"90","h":"45","x_len":"9","y_len":"4","points":"8","x1":48,"x2":28,"y1":21,"y2":37,"position_data":[{"w":36,"h":28},{"w":11,"h":36},{"w":34,"h":14},{"w":1,"h":31},{"w":30,"h":24},{"w":65,"h":5},{"w":52,"h":17},{"w":12,"h":31}],"background_index":2}
   ];
 
 
