@@ -60,7 +60,17 @@ hr{
 
 .utility-nav{
   position:absolute;
+
 }
+
+@media screen and
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) { 
+  .utility-nav button{
+    font-size:2em;
+  }
+}
+
 
 .controls {
   position: absolute;

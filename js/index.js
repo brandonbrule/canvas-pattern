@@ -375,21 +375,28 @@ function buttonEvents(){
     buttons[i].addEventListener('click', function(e){
         var data_action = e.target.getAttribute('data-action');
         switch (data_action) {
+          
           case 'toggle-menu':
             document.getElementById('menu').classList.toggle('active');
             break;
+          
           case 'randomize-pattern':
             config = JSON.parse(pattern_data.value);
             randomizePattern(config);
+            break;
+            
           case 'toggle-background': 
             randomBackground();
             break;
+
           case 'toggle-samples':
             cycleSamples();
             break;
+
           case 'submit-data':
             config = JSON.parse(pattern_data.value);
             drawPatternType();
+          
           default:
             console.log('button data-action not found');
         }
