@@ -40,7 +40,8 @@ var sample_examples = [
     {"w":"9","h":"49","x_len":6,"y_len":48,"points":"1","position_data":[{"w":6,"h":48}],"background_index":2},
     {"w":"56","h":"39","x_len":"9","y_len":"0","points":"4","position_data":[{"w":12,"h":35},{"w":49,"h":36},{"w":18,"h":39},{"w":15,"h":38}],"background_index":1},
     {"w":"2","h":"33","x_len":"2","y_len":"1","points":"1","background_index":3},
-    {"w":"90","h":"5","x_len":"82","y_len":"6","points":"1", "background_index": 4}
+    {"w":"54","h":"38","x_len":"12","y_len":"28","points":"4","position_data":[{"w":45,"h":7},{"w":32,"h":13},{"w":41,"h":30},{"w":39,"h":21}],"background_index":0},
+    {"w":"90","h":"5","x_len":"82","y_len":"6","points":"1", "background_index": 4},
   ];
 
 
@@ -201,7 +202,7 @@ function drawFromData(config){
   var points = config.points;
 
   x_len_input.value = config.x_len;
-  y_len_input.value = y_len;
+  y_len_input.value = config.y_len;
 
   width_input.value = w;
   height_input.value = h;
@@ -221,8 +222,8 @@ function drawFromData(config){
 
   // The Pattern that's repeated.
   ctx_pattern.beginPath();
-  ctx_pattern.moveTo(0,0);
-  ctx_pattern.lineTo(y_len, x_len);
+  ctx_pattern.moveTo(config.x1,config.y1);
+  ctx_pattern.lineTo(config.x2, config.y1);
   for (var i = 0, len = points; i < len; i++){
     ctx_pattern.lineTo(config.position_data[i].w, config.position_data[i].h);
   }
@@ -260,11 +261,16 @@ function randomizePattern(config){
   canvas_pattern.width = w;
   canvas_pattern.height = h;
 
+  config.x1 = Math.floor(Math.random() * w) + 1;
+  config.x2 = Math.floor(Math.random() * w) + 1;
+  config.y1 = Math.floor(Math.random() * h) + 1;
+  config.y2 = Math.floor(Math.random() * h) + 1;
+
 
   // The Pattern that's repeated.
   ctx_pattern.beginPath();
-  ctx_pattern.moveTo(0,0);
-  ctx_pattern.lineTo(y_len, x_len);
+  ctx_pattern.moveTo(config.x1,config.y1);
+  ctx_pattern.lineTo(config.x2, config.y1);
   for (var i = 0, len = points; i < len; i++){
     var rand_width = Math.floor(Math.random() * w) + 1;
     var rand_height = Math.floor(Math.random() * h) + 1;
