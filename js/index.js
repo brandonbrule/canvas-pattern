@@ -32,18 +32,15 @@ var background_colours = [
   ];
 
 var sample_examples = [
-    {"w":"12","h":"72","x_len":9,"y_len":23,"points":"3","position_data":[{"w":5,"h":8},{"w":2,"h":72},{"w":9,"h":23}]},
-    {"w":"76","h":"74","x_len":"7","y_len":"3","points":"1"},
-    {"w":"20","h":"4","x_len":"15","y_len":"1","points":"1"},
-    {"w":"12","h":"72","x_len":9,"y_len":4,"points":"3","position_data":[{"w":9,"h":13},{"w":1,"h":15},{"w":9,"h":4}]},
-    {"w":"9","h":"49","x_len":6,"y_len":48,"points":"1","position_data":[{"w":6,"h":48}]},
-    {"w":"7","h":"4","x_len":"3","y_len":"4","points":"1"},
-    {"w":"15","h":"28","x_len":9,"y_len":4,"points":"5","position_data":[{"w":8,"h":19},{"w":12,"h":13},{"w":10,"h":23},{"w":7,"h":6},{"w":9,"h":4}]},
-    {"w":"2","h":"33","x_len":"2","y_len":"1","points":"1"},
-    {"w":"26","h":"26","x_len":"14","y_len":"8","points":"1"},
-
-    {"w":"9","h":"49","x_len":"9","y_len":"45","points":"1"},
-    {"w":"90","h":"5","x_len":"82","y_len":"6","points":"1"}
+    {"w":"28","h":"45","x_len":"9","y_len":"4","points":"3","position_data":[{"w":15,"h":11},{"w":7,"h":14},{"w":27,"h":34}],"background_index":0},
+    {"w":"28","h":"45","x_len":"9","y_len":"4","points":"3","position_data":[{"w":10,"h":19},{"w":11,"h":21},{"w":27,"h":24}],"background_index":1},
+    {"w":"28","h":"45","x_len":"9","y_len":"4","points":"3","position_data":[{"w":9,"h":4},{"w":2,"h":4},{"w":1,"h":38}],"background_index":2},
+    {"w":"76","h":"74","x_len":"7","y_len":"3","points":"1","background_index":3},
+    {"w":"20","h":"4","x_len":"15","y_len":"1","points":"1", "background_index": 0},
+    {"w":"9","h":"49","x_len":6,"y_len":48,"points":"1","position_data":[{"w":6,"h":48}],"background_index":2},
+    {"w":"56","h":"39","x_len":"9","y_len":"0","points":"4","position_data":[{"w":12,"h":35},{"w":49,"h":36},{"w":18,"h":39},{"w":15,"h":38}],"background_index":1},
+    {"w":"2","h":"33","x_len":"2","y_len":"1","points":"1","background_index":3},
+    {"w":"90","h":"5","x_len":"82","y_len":"6","points":"1", "background_index": 4}
   ];
 
 
