@@ -115,13 +115,14 @@ function drawPattern(config){
 
 // Run Button, Draw Pattern From Data Input
 function drawFromData(config){
+
   var w = config.w;
   var h = config.h;
   var x_len = config.x_len;
   var y_len = config.y_len;
   var points = config.points;
 
-  x_len_input.value = x_len;
+  x_len_input.value = config.x_len;
   y_len_input.value = y_len;
 
   width_input.value = w;
@@ -151,11 +152,6 @@ function drawFromData(config){
 
   // Repeat the Pattern.
   repeatPattern(config);
-
-  // its.a('data x_len_input: ' + x_len_input.value);
-  // its.a('data y_len_input: ' + y_len_input.value);
-  // its.a(config);
-
  
 }
 
@@ -206,10 +202,6 @@ function randomizePattern(config){
   // Repeat the Pattern.
   repeatPattern(config);
 
-  // its.a('rand x_len_input: ' + x_len_input.value);
-  // its.a('rand y_len_input: ' + y_len_input.value);
-  // its.a(config);
-
 }
 
 
@@ -248,6 +240,7 @@ function debounce(func, wait, immediate) {
 // And Randomized Data
 function drawPatternType(){
   config = JSON.parse(pattern_data.value);
+
 
   // Draw Random Pattern From Data
   if (config.position_data){
@@ -291,7 +284,7 @@ var resizeCanvas = debounce(function() {
   drawPatternType();
 
 }, 250);
-resizeCanvas();
+
 
 window.addEventListener('resize', resizeCanvas, false);
 
@@ -300,6 +293,7 @@ window.addEventListener('resize', resizeCanvas, false);
 // OnLoad Set Up Slider Events and Default Sample
 window.onload = function(){
   controlEvents();
+  resizeCanvas();
   //cycleSamples();
 };
 
