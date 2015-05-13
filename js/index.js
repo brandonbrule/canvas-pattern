@@ -442,6 +442,10 @@ window.onload = function(){
   //cycleSamples();
 };
 
+// Back, Forward Button
+window.onpopstate=function(){
+  drawPatternType();
+}
 
 
 
