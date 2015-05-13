@@ -13,6 +13,8 @@ var ctx_repeat = canvas_repeat.getContext('2d');
 var canvas_pattern = document.getElementById('canvas-pattern');
 var ctx_pattern = canvas_pattern.getContext('2d');
 
+
+
 // Control Inputs
 var sliders = document.getElementsByTagName('input');
 var width_input = document.getElementById('width');
@@ -21,6 +23,7 @@ var x_len_input = document.getElementById('x-length');
 var y_len_input = document.getElementById('y-length');
 var random_input = document.getElementById('random');
 var pattern_data = document.getElementById('pattern-data');
+var svg_data = document.getElementById('svg-data-input');
 
 
 var background_colours = [
@@ -123,6 +126,36 @@ function setBackgroundColour(){
 }
 
 
+function drawSVG(){
+  var svg_ctx = new SVGCanvas( "canvas-pattern" );
+  var svg_container = document.getElementById('svg');
+  var svg_element = svg_container.getElementsByTagName('svg')[0];
+
+  config = JSON.parse(pattern_data.value);
+
+  svg_ctx.beginPath();
+  svg_ctx.moveTo(config.x1,config.y1);
+  svg_ctx.lineTo(config.x2, config.y1);
+  for (var i = 0, len = config.points; i < len; i++){
+    svg_ctx.lineTo(config.position_data[i].w, config.position_data[i].h);
+  }
+
+  svg_ctx.fill();
+
+  svg_container.innerHTML = svg_ctx.toDataURL("image/svg+xml");
+
+
+  if (svg_element){
+    document.getElementById('svg').getElementsByTagName('svg')[0].setAttribute('height', config.h);
+    document.getElementById('svg').getElementsByTagName('svg')[0].setAttribute('width', config.w);
+    svg_container.parentNode.setAttribute('style', 'background: ' + background_colours[config.background_index].background_colour);
+    document.getElementById('svg').getElementsByTagName('svg')[0].setAttribute('style', 'background: ' + background_colours[config.background_index].background_colour);
+    svg_data.innerHTML = svg_container.innerHTML;
+  }
+  
+};
+
+
 
 // Refill Canvas with repeating Pattern
 function repeatPattern(config){
@@ -137,10 +170,13 @@ function repeatPattern(config){
   ctx_repeat.fillStyle = pattern;
   ctx_repeat.fillRect(0,0,canvas_repeat.width,canvas_repeat.height);
 
+  canvas_pattern.parentNode.setAttribute('style', 'background: ' + background_colours[config.background_index].background_colour);
+
 
   patternData(config);
-
 }
+
+
 
 
 
@@ -467,7 +503,12 @@ document.onkeydown = function(e) {
           case 77:
             document.getElementById('menu').classList.toggle('active');
             break;
-          
+
+          // P - Export SVG
+          case 80:
+            drawSVG();
+            drawSVG();
+            break;
           default:
 
         }

@@ -39,7 +39,10 @@ hr{
   clear:both;
 }
 
-
+svg{
+  margin: 0 auto;
+  display: block;
+}
 
 
 .pattern-preview {

@@ -51,9 +51,15 @@
     <button data-action="toggle-background">(B)ackground</button>
     <button data-action="toggle-samples">(S)amples</button>
   </fieldset>
-  
-
-
+  <hr>
+  <fieldset>
+    <div class="pattern-preview">
+      <div id="svg"></div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <textarea id="svg-data-input"></textarea>
+  </fieldset>
   <hr>
   <textarea id="pattern-data">{"w":"62","h":"51","x_len":"29","y_len":"5","points":"7","position_data":[{"w":50,"h":32},{"w":9,"h":48},{"w":54,"h":34},{"w":23,"h":30},{"w":28,"h":45},{"w":15,"h":24},{"w":18,"h":22}]}</textarea>
   
@@ -64,6 +70,7 @@
 
 
   <script src='http://brandonbrule.github.io/itsa/js/itsa.js'></script>
+  <script src="svgcanvas.js"></script>
 
   <script src="js/index.js"></script>
 
