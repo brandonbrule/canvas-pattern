@@ -338,8 +338,6 @@ function drawPatternType(){
     config = JSON.parse(pattern_data.value);
   }
 
-  its.a(config);
-
 
   // Draw Random Pattern From Data
   if (config.position_data){
