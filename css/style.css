@@ -36,16 +36,19 @@ hr{
 
 
 
-#canvas-pattern {
+.pattern-preview {
   padding: 10px;
-  border: 1px solid #222;
+  box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
   background: #fff;
-  margin: 0 auto;
+}
+#canvas-pattern{
   display: block;
+  margin: 0 auto;
 }
 
 #canvas-repeat {
   display: block;
+
 }
 
 .controls {
@@ -53,17 +56,15 @@ hr{
   bottom: 0px;
   right: 10px;
   width: 240px;
-  border:1px solid #222;
-  
+  box-shadow: -2px -1px 5px -3px rgba(0, 0, 0, 0.8);
   padding: 40px;
   opacity: 0;
-  background: rgba(255,255,255, 0.15);
+  background: #e6e3df;
   transition: all 0.5s ease;
 }
 
 .controls:hover{
   opacity: 1;
-  background: rgba(255,255,255, 0.95);
 }
 
 .controls label {
