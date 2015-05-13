@@ -1,5 +1,6 @@
 var config;
 var sample_index=0;
+var background_index = 0;
 var focus_index = 1;
 
 
@@ -157,6 +158,29 @@ function drawFromData(config){
 
 
 
+function randomBackground(){
+  var samples = [
+    {background_colour: '#FFF056'},
+    {background_colour: '#fe524c'},
+    {background_colour: '#61D2D6'},
+    {background_colour: '#A0FF57'},
+    {background_colour: '#fff'}
+  ];
+
+  // drawSamples uses the modulus operator
+  // to continuously go through an array 
+  function drawSamples() {
+
+    //ctx.fillStyle = samples[background_index].background_colour;
+    document.getElementsByTagName('body')[0].style.background = samples[background_index].background_colour;
+
+    background_index = (background_index + 1) % samples.length;
+  }
+
+  drawSamples();
+}
+
+
 
 // Randomize the Pattern
 function randomizePattern(config){
@@ -194,6 +218,7 @@ function randomizePattern(config){
     position_data.push( { w: rand_width, h: rand_height } );
     ctx_pattern.lineTo(rand_width, rand_height);
   }
+
   ctx_pattern.fill();
 
 
@@ -386,6 +411,7 @@ function checkKey(e) {
   } else if (e.keyCode == '81') {
     // R
     config = JSON.parse(pattern_data.value);
+    randomBackground();
     randomizePattern(config);
     
   } else if (e.keyCode == '82') {
@@ -397,6 +423,9 @@ function checkKey(e) {
     // S
     cycleSamples();
     
+  } else if (e.keyCode == '66'){
+    // B
+    randomBackground();
   }
 
 }

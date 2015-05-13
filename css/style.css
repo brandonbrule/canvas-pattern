@@ -37,12 +37,11 @@ hr{
 
 
 #canvas-pattern {
-  position: absolute;
-  top: 10px;
-  right: 10px;
   padding: 10px;
   border: 1px solid #222;
   background: #fff;
+  margin: 0 auto;
+  display: block;
 }
 
 #canvas-repeat {
@@ -51,11 +50,20 @@ hr{
 
 .controls {
   position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 200px;
-  background: #fff;
-  padding: 20px;
+  bottom: 0px;
+  right: 10px;
+  width: 240px;
+  border:1px solid #222;
+  
+  padding: 40px;
+  opacity: 0;
+  background: rgba(255,255,255, 0.15);
+  transition: all 0.5s ease;
+}
+
+.controls:hover{
+  opacity: 1;
+  background: rgba(255,255,255, 0.95);
 }
 
 .controls label {
