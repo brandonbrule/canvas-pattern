@@ -23,6 +23,7 @@ var random_input = document.getElementById('random');
 var pattern_data = document.getElementById('pattern-data');
 var run_button = document.getElementById('run-button');
 var toggle_samples_input = document.getElementById('toggle-samples');
+var toggle_background_input = document.getElementById('toggle-background');
 
 
 function configFromControlValues(){
@@ -377,6 +378,10 @@ function cycleSamples(){
 // Samples Button
 toggle_samples_input.onclick = function(){
   cycleSamples();
+};
+
+toggle_background_input.onclick = function(){
+  randomBackground();
 };
 
 

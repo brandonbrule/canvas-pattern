@@ -23,7 +23,7 @@ textarea {
 
 fieldset{
   float: left;
-  width: 45%;
+  width: 12.5%;
   border: none;
   padding: 0;
   margin-left: 2.5%;
@@ -37,7 +37,7 @@ hr{
 
 
 .pattern-preview {
-  padding: 10px;
+  padding: 5px;
   box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
   background: #fff;
 }
@@ -54,10 +54,10 @@ hr{
 .controls {
   position: absolute;
   bottom: 0px;
-  right: 10px;
-  width: 240px;
+  left: 0;
+  width: 100%;
   box-shadow: -2px -1px 5px -3px rgba(0, 0, 0, 0.8);
-  padding: 40px;
+  padding: 10px;
   opacity: 0;
   background: #e6e3df;
   transition: all 0.5s ease;
