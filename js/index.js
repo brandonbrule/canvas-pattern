@@ -418,7 +418,6 @@ function buttonEvents(){
             break;
           
           case 'randomize-pattern':
-            setBackgroundColour();
             config = JSON.parse(pattern_data.value);
             randomizePattern(config);
 
@@ -487,7 +486,7 @@ document.onkeydown = function(e) {
           case 82:
             config = JSON.parse(pattern_data.value);
             randomizePattern(config);
-            setBackgroundColour();
+            //setBackgroundColour();
             break;
           
           // S - For Sample
