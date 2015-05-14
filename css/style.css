@@ -90,6 +90,9 @@ svg{
     fieldset{
       width: 33%;
     }
+    fieldset:first-child{
+      display: none;
+    }
   .utility-nav button{
     font-size:2em;
   }
