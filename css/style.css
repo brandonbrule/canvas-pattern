@@ -72,6 +72,20 @@ svg{
     only screen and (max-device-width: 667px), 
     only screen and (max-width: 480px)
 {
+   input[type='range'] {
+    -webkit-appearance: none;
+    height: 6.5em;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    padding: 2.5em;
+    background: #cecece; }
+
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 6em;
+    background: #fff;
+    height: 6em;
+    -webkit-border-radius: 50%; }
   .utility-nav button{
     font-size:2em;
   }
