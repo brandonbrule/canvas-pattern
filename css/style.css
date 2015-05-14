@@ -66,9 +66,11 @@ svg{
 
 }
 
-@media screen and
-(-webkit-min-device-pixel-ratio: 2), 
-(min-resolution: 192dpi) and (max-width: 700px) { 
+@media only screen 
+    and (max-device-width: 640px), 
+    only screen and (max-device-width: 667px), 
+    only screen and (max-width: 480px)
+{
   .utility-nav button{
     font-size:2em;
   }
