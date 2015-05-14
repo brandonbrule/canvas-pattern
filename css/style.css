@@ -90,13 +90,19 @@ svg{
     fieldset{
       width: 33%;
     }
-    fieldset:first-child{
+    fieldset:first-of-type{
       display: none;
     }
+    .pattern-preview, #svg-data-input{
+      display: none;
+    }
+
   .utility-nav button{
     font-size:2em;
   }
 }
+
+
 
 
 .controls {
