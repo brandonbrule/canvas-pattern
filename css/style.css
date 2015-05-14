@@ -86,6 +86,10 @@ svg{
     background: #fff;
     height: 6em;
     -webkit-border-radius: 50%; }
+
+    fieldset{
+      width: 33%;
+    }
   .utility-nav button{
     font-size:2em;
   }
