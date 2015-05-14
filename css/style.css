@@ -71,6 +71,10 @@ svg{
     only screen and (max-device-width: 667px), 
     only screen and (max-width: 480px)
 {
+  .utility-nav{
+    top: 1em;
+    left: 1em;
+  }
   .utility-nav button{
     font-size:2em;
   }
