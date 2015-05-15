@@ -23,7 +23,7 @@ var x_len_input = document.getElementById('x-length');
 var y_len_input = document.getElementById('y-length');
 var random_input = document.getElementById('random');
 var pattern_data = document.getElementById('pattern-data');
-var svg_data = document.getElementById('svg-data-input');
+var svg_data_input = document.getElementById('svg-data-input');
 
 
 var background_colours = [
@@ -127,6 +127,49 @@ function setBackgroundColour(){
 }
 
 
+function exportToCodePen(svg){
+
+  var svg_str = svg_data_input.innerHTML.replace(/"/g, '\'');
+      svg_str = svg_str.replace(/&lt;/g, '<');
+      svg_str = svg_str.replace(/&gt;/g, '>');
+
+  var canvas_pattern_data_str = pattern_data.innerHTML;
+
+  var html = [
+      '<div style="display: inline-block; padding:5px; background:#fff; border:1px solid #222;">',
+        svg_str,
+        '<a target="_blank" href="'+ window.location.href  + '">Link</a>',
+      '</div>',
+    
+  ].join("");
+
+  var css = 'body{ background: url("data:image/svg+xml;utf8,' + svg_str + ' "); } svg{display: block}'
+
+  var data = {
+    title              : "",
+    description        : "",
+    html               : html,
+    html_pre_processor : "",
+    css                : css,
+    css_pre_processor  : "",
+    css_starter        : "",
+    css_prefix         : "",
+    js                 : '//' + window.location.href,
+    js_pre_processor   : "",
+    js_modernizr       : "",
+    js_library         : "",
+    html_classes       : "",
+    css_external       : "",
+    js_external        : ""
+  };
+
+  var dataString = JSON.stringify(data);
+  // Get Input and Append
+  var data_input = document.getElementById('data-input');
+  data_input.value = dataString;
+}
+
+
 function drawSVG(){
   var svg_ctx = new SVGCanvas( "canvas-pattern" );
   var svg_container = document.getElementById('svg');
@@ -151,9 +194,11 @@ function drawSVG(){
     document.getElementById('svg').getElementsByTagName('svg')[0].setAttribute('width', config.w);
     svg_container.parentNode.setAttribute('style', 'background: ' + background_colours[config.background_index].background_colour);
     document.getElementById('svg').getElementsByTagName('svg')[0].setAttribute('style', 'background: ' + background_colours[config.background_index].background_colour);
-    svg_data.innerHTML = svg_container.innerHTML;
+    svg_data_input.innerHTML = svg_container.innerHTML;
+
+    exportToCodePen(svg_element);
   }
-  
+
 };
 
 
@@ -418,9 +463,9 @@ function buttonEvents(){
             break;
           
           case 'randomize-pattern':
+            setBackgroundColour();
             config = JSON.parse(pattern_data.value);
             randomizePattern(config);
-
             break;
             
           case 'toggle-background': 
@@ -430,6 +475,12 @@ function buttonEvents(){
           case 'toggle-samples':
             cycleSamples();
             break;
+
+          case 'export-codepen':
+            drawSVG();
+            drawSVG();
+            document.getElementById('export-codepen').submit();
+          break;
           
           default:
             console.log('button data-action not found');
@@ -484,6 +535,7 @@ document.onkeydown = function(e) {
           
           // R - For Random
           case 82:
+            setBackgroundColour();
             config = JSON.parse(pattern_data.value);
             randomizePattern(config);
             //setBackgroundColour();
@@ -504,11 +556,13 @@ document.onkeydown = function(e) {
             document.getElementById('menu').classList.toggle('active');
             break;
 
-          // P - Export SVG
-          case 80:
+          // E - Export SVG
+          case 69:
             drawSVG();
             drawSVG();
+            document.getElementById('export-codepen').submit();
             break;
+
           default:
 
         }
