@@ -27,11 +27,11 @@ var svg_data_input = document.getElementById('svg-data-input');
 
 
 var background_colours = [
-    {background_colour: '#FFF056'},
-    {background_colour: '#fe524c'},
-    {background_colour: '#61D2D6'},
-    {background_colour: '#A0FF57'},
-    {background_colour: '#fff'}
+    {background_colour: 'rgb(255,240,86)'},
+    {background_colour: 'rgb(254,82,76)'},
+    {background_colour: 'rgb(97,210,214)'},
+    {background_colour: 'rgb(160,255,87)'},
+    {background_colour: 'rgb(255,255,255)'}
   ];
 
 var sample_examples = [
