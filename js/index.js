@@ -136,9 +136,9 @@ function exportToCodePen(svg){
   var canvas_pattern_data_str = pattern_data.innerHTML;
 
   var html = [
-      '<div style="display: inline-block; padding:5px; background:#fff; border:1px solid #222;">',
+      '<div style="position: absolute; bottom: 20px; right: 20px; display: inline-block; padding:5px; background:#fff; border:1px solid #222;">',
         svg_str,
-        '<a target="_blank" href="'+ window.location.href  + '">Link</a>',
+        '<a style="display:block; text-align: center; color:#222; margin-top:5px;" target="_blank" href="'+ window.location.href  + '">Link</a>',
       '</div>',
     
   ].join("");
